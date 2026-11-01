@@ -1,41 +1,111 @@
-### Manufacturing Management
+# Manufacturing Management — Frappe Framework
 
-Custom Manufacturing ERP
+A custom manufacturing management application built with **Frappe Framework v15**, Python, JavaScript, and MariaDB.
 
-### Installation
+This project is part of a hands-on Frappe/ERPNext development journey, focusing on manufacturing workflows, backend validations, document relationships, and business logic.
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+## Tech Stack
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app manufacturing_management
+- Frappe Framework v15
+- Python 3.11
+- JavaScript
+- MariaDB
+- Redis
+- Bench CLI
+- Ubuntu 24.04 (WSL2) for local development
+
+## Implemented Features
+
+### Production Machine Management
+- Create, view, update, and delete production machine records
+- Manage machine code, name, quantity, unit cost, status, and remarks
+- Backend validation for quantity and unit cost
+- Duplicate machine code validation
+
+### Raw Material Management
+- Maintain a raw material master
+- Store material code, name, unit, and default price
+- Reference materials using Frappe Link fields
+
+### Production Machine Materials
+- Assign multiple raw materials to a production machine
+- Manage material quantities and unit prices
+- Automatically calculate line totals on document validation
+- Calculate total material cost
+- Reject invalid quantities, negative prices, and duplicate materials
+
+## Data Model
+
+```text
+Production Machine
+    |
+    |-- Production Machine Material (Child Table)
+            |
+            |-- Raw Material (Link)
 ```
 
-### Contributing
+## Installation
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+### Requirements
+- Frappe Framework v15
+- Bench CLI
+- MariaDB and Redis
+
+### Install the App
+
+From an existing Frappe Bench:
 
 ```bash
-cd apps/manufacturing_management
-pre-commit install
+bench get-app https://github.com/YOUR_USERNAME/manufacturing_management.git
+bench --site YOUR_SITE install-app manufacturing_management
+bench --site YOUR_SITE migrate
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+### Start Development Server
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+```bash
+bench start
+```
 
-### CI
+## Project Structure
 
-This app can use GitHub Actions for CI. The following workflows are configured:
+```text
+manufacturing_management/
+├── manufacturing_management/
+│   ├── config/
+│   ├── manufacturing_management/
+│   │   └── doctype/
+│   │       ├── production_machine/
+│   │       ├── production_machine_material/
+│   │       └── raw_material/
+│   ├── hooks.py
+│   └── modules.txt
+├── pyproject.toml
+└── README.md
+```
 
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
+## Roadmap
 
+- [x] Custom Frappe application setup
+- [x] Production Machine DocType
+- [x] Raw Material DocType
+- [x] Child Table and Link relationships
+- [x] Backend validation
+- [x] Material cost calculation
+- [ ] Real-time Client Script calculations
+- [ ] Automatic material price fetching
+- [ ] Workflow and role-based permissions
+- [ ] Material requisition
+- [ ] Production order management
+- [ ] Reports and dashboards
+- [ ] Automated tests
 
-### License
+## Development Status
 
-mit
+**Active Learning & Development**
+
+The current version demonstrates foundational Frappe concepts. It is not yet production-ready.
+
+## License
+
+MIT, if applicable to the license selected during app creation.
