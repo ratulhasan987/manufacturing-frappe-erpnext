@@ -1,0 +1,73 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-11-01 11:47:18.732292",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "material_code",
+  "material_name",
+  "unit",
+  "default_price"
+ ],
+ "fields": [
+  {
+   "fieldname": "material_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Material Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "material_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Material Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Unit",
+   "options": "Kg\nPcs\nLiter\nMeter",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Default Price",
+   "non_negative": 1,
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-01 11:50:35.639619",
+ "modified_by": "Administrator",
+ "module": "Manufacturing Management",
+ "name": "Raw Material",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
